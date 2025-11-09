@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>project: building my own media server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+      @font-face {
+        font-family: "SourceSerif4";
+        src: url(/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.ttf) format('truetype-variations');
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: "SourceSerif4";
+        src: url(/fonts/SourceSerif4-VariableFont_opsz,wght.ttf) format('truetype-variations');
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      html {
+        overflow-y: scroll; //always show scrollbar
+      }
+
+      hmtl, body {
+        margin: 0; // reset margins
+      }
+
+      body {
+        background-color: rgb(255, 230, 187);
+
+        font-family: "SourceSerif4", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      h1 {
+        text-align: center;
+        font-weight: 700;
+        font-style: bold;
+      }
+
+      h2 {
+        text-align: center;
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      p {
+        margin-top: 0.5em;
+      }
+
+      hr {
+        margin: 2em 0em;
+      }
+
+        /* Override justification inside tables */
+        table, th, td {
+          text-align: left;
+        }
+
+      .header {
+        width: 600px;
+        margin: 0 auto;
+        padding: 2em 2em 0em 2em;
+      }
+      
+      .content {
+        width: 600px;
+        margin: 0 auto;
+        padding: 2em 2em 2em 2em;
+    text-align: justify;
+      }
+
+      
+
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <h1>project: building my own media server</h1>
+            <p>
+                I love watching movies. Especially <i>older</i> <sup><a href="#footnote-1" id="ref-1">[1]</a></sup> ones, that aged for some
+                time, and had different generations of viewers decide if they had merit.
+                It's not hard to find these movies, but it's gotten harder to watch them
+                — all the streaming services have horrible catalogue design by default,
+                and only license movies for a period of time.
+            </p>
+            <p>
+                When I was young, I still
+                got to experience people renting movies physically and ripping the
+                contents. Today, there are plenty of ways to download movies, but for legal reasons I won't go into detail here. If you know, you know; if not, it's easy to find out.
+            </p>
+            <p>A media server would store all my movies centrally. I'd have full control over the physical and digital assets.</p>
+            <h2>the build</h2>
+            <p>
+                Frankly, I don't keep up with current builds, so I asked for advice on Reddit´s /r/buildapc.
+                My requirements were as following:
+                <ul>
+                    <li>be performant enough to last the next years</li>
+                    <li>have enough space for a decently seized movie collection</li>
+                    <li>be quiet enough to stand in the living room without being noisy</li>
+                    <li>have a Wifi connection (I don't like the sight of Ethernet cables)</li>
+                    <li>small form factor</li>
+                    <li>doesn't cost more than 500€</li>
+                </ul>
+                This was the build I ordered:
+            </p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Choice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CPU</td>
+                        <td>Intel Core i3-12100 3.3 GHz Quad-Core Processor</td>
+                    </tr>
+                    <tr>
+                        <td>Motherboard</td>
+                        <td>MSI PRO-H610M-E-DDR4 Micro ATX LGA1700 Motherboard</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>PNY XLR8 16 GB (2 x 8 GB) DDR4-3200 CL16 Memory</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>Patriot P300 128 GB M.2-2280 PCIe 3.0 X4 NVME Solid State Drive</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>Seagate Barracuda Compute 8 TB 3.5" 5400 RPM Internal Hard Drive</td>
+                    </tr>
+                    <tr>
+                        <td>Case</td>
+                        <td>Silverstone PS16B MicroATX Mini Tower Case</td>
+                    </tr>
+                    <tr>
+                        <td>Power Supply</td>
+                        <td>MSI MAG A550BN 550 W 80+ Bronze Certified ATX Power Supply</td>
+                    </tr>
+                    <tr>
+                        <td>Wireless Network Adapter</td>
+                        <td>TP-Link Archer T4E 802.11a/b/g/n/ac PCIe x1 Wi-Fi Adapter</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>assembly</h2>
+            <p>
+                The last PC I built was a gaming PC a couple of years back, so I was a bit rusty on my skills. Anyway, I'd just wing it!
+            </p>
+            <img src="/assets/my-boy-bobby.jpg" width="600px" height="auto">
+            <p>
+                Entering the final phase of assembly, I realized that the CPU cooler had to be mounted on the back of the motherboard - so I started all over again.
+                Apart from this oversight, all went well, despite the little room of the MicroATX case.
+            </p>
+            <p>
+                The crucial step for me is always powering on the machine for the first time: Will it even start, or catch fire? Luckily, this never happened to me and this build ran perfectly fine and quiet.
+            </p>
+            <h2>software setup</h2>
+            <p>
+                I chose Ubuntu as my server OS, and Docker for running the services. For serving the movies I chose Jellyfin over Plex, because for Plex I apparently needed an account which I didn't like that much.
+            </p>
+            <p>
+                The *arr stack (Radarr, Bazarr, Prowlarr) offer a nice web interface for my SO and me. We enter the name of a <i>public domain</i> movie we would like to watch sometime — like Nanook of the North (1922) <sup><a href="#footnote-2" id="ref-2">[2]</a></sup>. Prowlarr checks various indexers, Radarr downloads the movie, and Bazarr finds matching subtitles.
+                I can also set a target profile, eg. 720p, and Radarr checks if my download matches that profile and upgrades it, if necessary.
+            </p>
+            <p>
+                At last, I still needed a host name for the server. I read a lot of Charles Bukowski's works, and in one of his books his alter ego went to the racehorse track and placed a bet on <i>my boy bobby</i>, which is now my media servers name.
+            </p>
+            <h2>todos, napkin math and closing notes</h2>
+            <p>
+                Some slight grievances I still have to solve with my setup:
+                <ul>
+                    <li>
+                        Setup some reverse proxy to make access easier. Right now I type in the static IP and port, or use a bookmark, but this could be easier.
+                    </li>
+                    <li>
+                        Figure out how to backup manually edited metadata from Jellyfin. The automatic lookup confuses some movies with others. I overwrite them manually, but I'm pretty sure it's not persisted in my backup right now.
+                    </li>
+                    <li>
+                        Monitor power usage and possibly apply some perfomance tuning. The box runs 24/7 and I don't know the effective cost of that — scary!
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Aside from the power cost, this build came in at 550€; thats 9.16€ per month over 5 years (even though I hope it runs closer to 10 years).
+            </p>
+            <p>
+                All in all I'm very satisfied with this build: It hit every requirement I needed, and it just runs. I've only encountered minor hiccups, and it was a great tinkering excercise.
+            </p>
+            <hr>
+            <p>
+                <h2>footnotes</h2>
+                <p>You can click on the footnote index to jump back:</p>
+                <ul>
+                    <li id="footnote-1">
+                        <a href="#ref-1"><sup>[1]</sup></a> An old movie for me is anything released before the 2000s.
+                    </li>
+                    <li id="footnote-2">
+                        <a href="#ref-2"><sup>[2]</sup></a> Nanook of the North is not only an old movie, it's great semi-documentary (some parts of it are staged)!
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </body>
+</html>
