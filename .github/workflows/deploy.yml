@@ -30,4 +30,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./content --project-name=${{ secrets.CF_PROJECT_NAME }}
+          command: pages deploy ./out --project-name=${{ secrets.CF_PROJECT_NAME }} --commit-dirty=true
