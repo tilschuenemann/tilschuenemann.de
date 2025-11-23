@@ -1,0 +1,90 @@
+{% extends '_partials/base.html' %}
+{% block title %}
+    overlooting.wiki {%
+    endblock title %}
+    {% block content %}
+        <h1>overlooting.wiki</h1>
+        <p>
+            In September I picked up a new indie game: Overlooting. It's an
+            inventory-builder roguelike, which means that every run is different, and that
+            you have to manage your steady flow of new items to a fixed number of
+            equipment slots.
+        </p>
+        <p>
+            The game just launched in September '25 and has a small Discord community, but
+            next to no resources about the game. After playing it a couple of times I got
+            curious and wondered how to achieve a near-perfect playstyle. I never found
+            out, but I created a reference for the game instead. Let me show you how!
+        </p>
+        <h2>data extraction</h2>
+        <p>
+            I never did much reverse-engineering, so this was a first time. Opening the
+            game folder, three files greeted me, two .dll files and one 300 MB executable.
+            Inspecting the .exe, I could see that it was made using the Godot game engine.
+            After a brief search for a decompilation tool I landed on
+            <a href="https://github.com/GDRETools/gdsdecomp">gdsdecomp</a>. After running
+            it on the .exe, it created a Godot project with all the non-obfuscated game
+            files.
+        </p>
+        <p>
+            I wanted to get all Mastery data for my first milestone. After inspecting the
+            format, I wrote a small script to extract the key-value pairs. I could do this
+            for most of the game entities. Sometimes, I had to add some manual corrections
+            like using parts of the filepath as metadata tho.
+        </p>
+        <p>
+            Getting the sprites was also a fun excercise: The spritesheets contained all
+            animation frames, so for every enemy I extracted the first square and centered
+            the image.
+        </p>
+        <h2>creating the reference</h2>
+        <p>
+            At this point, I believe that I am a HTML+CSS+Jinja diehard! It's a nice stack
+            for me, I can quickly iterate, and it would be sufficient for this project as
+            well.
+        </p>
+        <p>
+            The major problem I faced were the cross-dependencies for the game entities. I
+            tried to add the logic manually, but it was cumbersome and error-prone. To be
+            more specific: On a single page, I wanted to list x. This graph is hard to
+            represent using JSON files, because you have manually filter all the relevant
+            items.
+        </p>
+        <p>
+            At my dayjob, I used the GraphQL API of Shopify, so maybe this would solve my
+            problems? After setting up strawberry-graphql, I read all my JSON entities
+            into Strawberry, which setup the entity linking using my own resolver code.
+            Now I could easily pull only the relevant data for each page, and
+            cross-referencing became a breeze!
+        </p>
+        <h2>feedback</h2>
+        <p>
+            I bought the domain overlooting.wiki, and setup Cloudflare Pages to serve my
+            static files. Cloudflare offers server-side analytics which was also a plus
+            for me. I shared my site on the official Discord and in the Steam community
+            section.
+        </p>
+        <p>
+            Looking at the traffic I got ~6.000 unique visitors and 88.000 requests in the
+            last 30 days. Mind you, that I just enabled the Cloudflare challenge, so most
+            of it might just be bot traffic.
+        </p>
+        <h2>the wiki part</h2>
+        <p>
+            To be honest, I never got the wiki part right: Other people can't suggest,
+            discuss, or edit contents. I've tried to setup
+            <a href="https://www.mediawiki.org/wiki/MediaWiki">MediaMiki</a> (which powers
+            Wikipedia), but I feel like it's made to be setup once and run forever. It
+            also has a huge configuration surface. I wanted to run it idempotently via a
+            Docker container, but that was already too much of a hassle. My second option
+            was <a href="https://www.dokuwiki.org/dokuwiki">DokuWiki</a>, but I struggled
+            to set it up for similar reasons.
+        </p>
+        <p>
+            Overlooting hasn't changed much in the meantime, and the next content update
+            is supposed to arrive in December / January I believe. Until then, the recency
+            of my little site is fine.
+        </p>
+    {% endblock content %}
+    {% block footnotes %}
+    {% endblock footnotes %}
