@@ -10,5 +10,5 @@ wheels/
 .venv
 
 # ignore everything in out-dir, but not out-dir
-out/*
+out/**
 !out/.gitkeep
