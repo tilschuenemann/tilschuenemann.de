@@ -1,10 +1,121 @@
-{% extends '_partials/base.html' %}
-{% block title %}
-    building my own media server
-{% endblock
-title %}
-{% block content %}
-    <h1>building my own media server</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>    building my own media server
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("../fonts/SpaceGrotesk-VariableFont.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+
+      @font-face {
+        font-family: "Mulish";
+        src: url("../fonts/Mulish-VariableFont.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+
+      /* Fill whole page and keep footer at bottom. Reset margins. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Keep scrollbar always visible to keep spacing consistent. */
+      html {
+        overflow-y: scroll;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+
+        background-color: rgb(255, 230, 187);
+
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+
+        font-family: "Mulish", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      p {
+        margin-top: 0.5em;
+      }
+
+      /* Override justification inside tables */
+      table,
+      th,
+      td,
+      .footnotes {
+        text-align: left;
+      }
+
+      header h1 {
+        padding: 0.25em 0em;
+        margin: 0em;
+
+        font-weight: 700;
+        font-style: bold;
+        font-size: 70px;
+
+        font-family: "Space Grotesk", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      a {
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.66s ease-in-out;
+        color: #c07139;
+      }
+      a:hover {
+        color: #8b4513;
+      }
+
+      /* Set consistent width and margins. Justify text. */
+      header,
+      main,
+      footer {
+        width: 650px;
+        margin: 0 auto;
+        text-align: justify;
+      }
+
+      /* spacer-div keeps footer at the bottom of the page. */
+      .spacer {
+        flex: 1;
+      }
+
+      footer {
+        padding: 1.5em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>
+  <a href="/index.html">TIL SCHÜNEMANN</a>
+</h1></header>
+    <main>
+      <div class="content">    <h1>building my own media server</h1>
     <p>
         I love watching movies. Especially <a href="#footnote-1" id="ref-1">older<sup>[1]</a></sup> ones, that aged for some
         time, and had different generations of viewers decide if they had merit.
@@ -120,9 +231,8 @@ title %}
     <p>
         All in all, I'm very satisfied! Every requirement got checked and the box just runs. I've only encountered minor hiccups, and it was a great tinkering excercise.
     </p>
-{% endblock content %}
-
-{% block footnotes %}
+</div>
+      <div class="footnotes">
 
     <h2>footnotes</h2>
     <p>You can click on the footnote index to jump back:
@@ -136,4 +246,9 @@ title %}
     </ul>
     </p>
 
-{% endblock footnotes %}
+      </div>
+    </main>
+    <div class="spacer"></div>
+    <footer>made with <span style="color: saddlebrown">♥</span> by Til Schünemann</footer>
+  </body>
+</html>

@@ -17,8 +17,20 @@ install:
 
 .PHONY: run
 run:
-> uv run python -m http.server 9000 --directory src/
+> uv run python -m http.server 9000 --directory out/
 
 .PHONY: fmt 
 fmt: 
 > uv run djlint src/**/*.html --reformat
+
+.PHONY: build
+build:
+> uv run build.py
+
+.PHONY: build-all
+build-all:
+> CF_PAGES=true uv run build.py
+
+.PHONY: purge 
+purge: 
+> rm -rf ./out && mkdir out
