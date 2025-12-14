@@ -2,13 +2,24 @@ import json
 import os
 import time
 from pathlib import Path
-
+import random
+from fontTools.ttLib import TTFont
+import string
 from jinja2 import Environment, FileSystemLoader
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
 import os
 import shutil
+import random
+
+from bs4 import BeautifulSoup, NavigableString
+import string
+from lxml import html
+import json
+from typing import Dict
+
+from scripts.scrambling import scramble_font, scramble_html
 
 env = Environment(
 	loader=FileSystemLoader(["src"]),
@@ -50,6 +61,12 @@ def build(path: Path) -> None:
 
 	template = env.get_template(fpath_str)
 	output = template.render()
+
+	if fpath.name == "sacrificing-accessibility-for-not-getting-web-scraped.html":
+		translation_mapping = scramble_font()
+		output = scramble_html(output, translation_mapping)
+		shutil.copytree("src/fonts", "out/fonts", dirs_exist_ok=True)
+
 	with open(f"out/{fpath_str}", "w") as f:
 		f.write(output)
 		print(f"Built: {fpath_str}")
