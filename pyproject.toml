@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "bs4>=0.0.2",
+    "fonttools>=4.61.1",
     "jinja2>=3.1.6",
+    "lxml>=6.0.2",
     "ruff>=0.14.3",
     "watchdog>=6.0.0",
 ]
@@ -64,3 +67,6 @@ select = [
     "N",   # pep8-naming
     "S",   # flake8-bandit
 ]
+
+[tool.uv.workspace]
+members = ["eatthis"]
