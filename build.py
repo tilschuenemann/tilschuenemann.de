@@ -30,6 +30,7 @@ env = Environment(
 
 os.makedirs("out", exist_ok=True)
 os.makedirs("out/projects", exist_ok=True)
+os.makedirs("out/pages", exist_ok=True)
 os.makedirs("out/assets", exist_ok=True)
 os.makedirs("out/fonts", exist_ok=True)
 
