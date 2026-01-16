@@ -1,0 +1,27 @@
+{
+  "Post Boilerplate": {
+    "prefix": "post-boilerplate",
+    "body": [
+      "{% extends '_partials/base.html' %}",
+      "{% block title %}",
+      "    ${1:title}",
+      "{% endblock title %}",
+      "{% block content %}",
+      "    <h1>${1}</h1>",
+      "    <p>",
+      "    </p>",
+      "{% endblock content %}",
+      "{% block footnotes %}",
+      "{% endblock footnotes %}"
+    ]
+  },
+  "footnote": {
+    "prefix": "footnote",
+    "body": [
+      "<a href=\"#footnote-${1:index}\" id=\"ref-${1}\">placeholder<sup>[${1}]</a></sup>\"",
+      "<li id=\"footnote-${1}\">\"",
+      "<a href=\"#ref-${1}\"><sup>[${1}]</sup></a> placeholder\"",
+      "</li>\"",
+    ]
+  }
+}

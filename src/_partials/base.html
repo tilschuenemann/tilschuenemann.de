@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>
-            {% block title %}{% endblock %}
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
       @font-face {
         font-family: "Space Grotesk";
         src: url("../fonts/SpaceGrotesk-VariableFont.ttf") format("truetype");
@@ -57,6 +57,17 @@
 
       p {
         margin-top: 0.5em;
+      }
+
+      q {
+        font-style: italic;
+        padding: 0em 1em;
+      }
+
+      /* center images vertically */
+      img {
+        display: block; 
+        margin: 0 auto;
       }
 
       /* Override justification inside tables */
@@ -113,25 +124,25 @@
       {% block css %}
 
       {% endblock css %}
-        </style>
-    </head>
-    <body>
-        <header>
-            {% include '_partials/header.html' %}
-        </header>
-        <main>
-            <div class="content">
-                {% block content %}
-                {% endblock content %}
-            </div>
-            <div class="footnotes">
-                {% block footnotes %}
-                {% endblock footnotes %}
-            </div>
-        </main>
-        <div class="spacer"></div>
-        <footer>
-            {% include '_partials/footer.html' %}
-        </footer>
-    </body>
+    </style>
+  </head>
+  <body>
+    <header>
+      {% include '_partials/header.html' %}
+    </header>
+    <main>
+      <div class="content">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <div class="footnotes">
+        {% block footnotes %}
+        {% endblock footnotes %}
+      </div>
+    </main>
+    <div class="spacer"></div>
+    <footer>
+      {% include '_partials/footer.html' %}
+    </footer>
+  </body>
 </html>

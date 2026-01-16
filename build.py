@@ -29,7 +29,6 @@ env = Environment(
 )
 
 os.makedirs("out", exist_ok=True)
-os.makedirs("out/projects", exist_ok=True)
 os.makedirs("out/assets", exist_ok=True)
 os.makedirs("out/fonts", exist_ok=True)
 
@@ -51,6 +50,9 @@ class SiteBuilderHandler(FileSystemEventHandler):
 def build(path: Path) -> None:
 	fpath = Path(path).relative_to(Path("src"))
 
+	parent_dir = fpath.parent
+	os.makedirs("out" / parent_dir, exist_ok=True)
+
 	fpath_str = str(fpath)
 
 	if fpath_str.startswith("_"):
@@ -62,10 +64,10 @@ def build(path: Path) -> None:
 	template = env.get_template(fpath_str)
 	output = template.render()
 
-	if fpath.name == "sacrificing-accessibility-for-not-getting-web-scraped.html":
-		translation_mapping = scramble_font()
-		output = scramble_html(output, translation_mapping)
-		shutil.copytree("src/fonts", "out/fonts", dirs_exist_ok=True)
+	# if fpath.name == "sacrificing-accessibility-for-not-getting-web-scraped.html":
+	# 	translation_mapping = scramble_font()
+	# 	output = scramble_html(output, translation_mapping)
+	# 	shutil.copytree("src/fonts", "out/fonts", dirs_exist_ok=True)
 
 	with open(f"out/{fpath_str}", "w") as f:
 		f.write(output)
