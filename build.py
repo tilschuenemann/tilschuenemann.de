@@ -64,10 +64,10 @@ def build(path: Path) -> None:
 	template = env.get_template(fpath_str)
 	output = template.render()
 
-	# if fpath.name == "sacrificing-accessibility-for-not-getting-web-scraped.html":
-	# 	translation_mapping = scramble_font()
-	# 	output = scramble_html(output, translation_mapping)
-	# 	shutil.copytree("src/fonts", "out/fonts", dirs_exist_ok=True)
+	if fpath.name == "sacrificing-accessibility-for-not-getting-web-scraped.html":
+		translation_mapping = scramble_font()
+		output = scramble_html(output, translation_mapping)
+		shutil.copytree("src/fonts", "out/fonts", dirs_exist_ok=True)
 
 	with open(f"out/{fpath_str}", "w") as f:
 		f.write(output)
